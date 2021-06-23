@@ -1,80 +1,166 @@
 // eslint-disable-next-line max-classes-per-file
-import React from 'react';
-import Select from 'react-select';
-import SignaturePad from 'react-signature-canvas';
-import ReactBootstrapSlider from 'react-bootstrap-slider';
+import React from "react";
+import Select from "react-select";
+import SignaturePad from "react-signature-canvas";
+import ReactBootstrapSlider from "react-bootstrap-slider";
 
-import StarRating from './star-rating';
-import HeaderBar from './header-bar';
-import DatePicker from './date-picker';
-import ComponentHeader from './component-header';
-import ComponentLabel from './component-label';
-import myxss from './myxss';
+import StarRating from "./star-rating";
+import HeaderBar from "./header-bar";
+import DatePicker from "./date-picker";
+import ComponentHeader from "./component-header";
+import ComponentLabel from "./component-label";
+import myxss from "./myxss";
 
 const FormElements = {};
 
 class Header extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      hasClicked: false,
+    };
+  }
+
   render() {
     // const headerClasses = `dynamic-input ${this.props.data.element}-input`;
-    let classNames = 'static';
-    if (this.props.data.bold) { classNames += ' bold'; }
-    if (this.props.data.italic) { classNames += ' italic'; }
+    let classNames = "static";
+    if (this.props.data.bold) {
+      classNames += " bold";
+    }
+    if (this.props.data.italic) {
+      classNames += " italic";
+    }
 
-    let baseClasses = 'SortableItem rfb-item';
-    if (this.props.data.pageBreakBefore) { baseClasses += ' alwaysbreak'; }
+    let baseClasses = "SortableItem rfb-item";
+    if (this.state.hasClicked) {
+      baseClasses += " has-clicked";
+    }
+    if (this.props.data.pageBreakBefore) {
+      baseClasses += " alwaysbreak";
+    }
 
     return (
-      <div className={baseClasses}>
+      <div
+        className={baseClasses}
+        onClick={() => this.setState({ hasClicked: !this.state.hasClicked })}
+      >
         <ComponentHeader {...this.props} />
-        <h3 className={classNames} dangerouslySetInnerHTML={{ __html: myxss.process(this.props.data.content) }} />
+        <h3
+          className={classNames}
+          dangerouslySetInnerHTML={{
+            __html: myxss.process(this.props.data.content),
+          }}
+        />
       </div>
     );
   }
 }
 
 class Paragraph extends React.Component {
-  render() {
-    let classNames = 'static';
-    if (this.props.data.bold) { classNames += ' bold'; }
-    if (this.props.data.italic) { classNames += ' italic'; }
+  constructor(props) {
+    super(props);
+    this.state = {
+      hasClicked: false,
+    };
+  }
 
-    let baseClasses = 'SortableItem rfb-item';
-    if (this.props.data.pageBreakBefore) { baseClasses += ' alwaysbreak'; }
+  render() {
+    let classNames = "static";
+    if (this.props.data.bold) {
+      classNames += " bold";
+    }
+    if (this.props.data.italic) {
+      classNames += " italic";
+    }
+
+    let baseClasses = "SortableItem rfb-item";
+    if (this.props.data.pageBreakBefore) {
+      baseClasses += " alwaysbreak";
+    }
+    if (this.state.hasClicked) {
+      baseClasses += " has-clicked";
+    }
 
     return (
-      <div className={baseClasses}>
+      <div
+        className={baseClasses}
+        onClick={() => this.setState({ hasClicked: !this.state.hasClicked })}
+      >
         <ComponentHeader {...this.props} />
-        <p className={classNames} dangerouslySetInnerHTML={{ __html: myxss.process(this.props.data.content) }} />
+        <p
+          className={classNames}
+          dangerouslySetInnerHTML={{
+            __html: myxss.process(this.props.data.content),
+          }}
+        />
       </div>
     );
   }
 }
 
 class Label extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      hasClicked: false,
+    };
+  }
   render() {
-    let classNames = 'static';
-    if (this.props.data.bold) { classNames += ' bold'; }
-    if (this.props.data.italic) { classNames += ' italic'; }
+    let classNames = "static";
+    if (this.props.data.bold) {
+      classNames += " bold";
+    }
+    if (this.props.data.italic) {
+      classNames += " italic";
+    }
 
-    let baseClasses = 'SortableItem rfb-item';
-    if (this.props.data.pageBreakBefore) { baseClasses += ' alwaysbreak'; }
+    let baseClasses = "SortableItem rfb-item";
+    if (this.props.data.pageBreakBefore) {
+      baseClasses += " alwaysbreak";
+    }
+
+    if (this.state.hasClicked) {
+      baseClasses += " has-clicked";
+    }
 
     return (
-      <div className={baseClasses}>
+      <div
+        className={baseClasses}
+        onClick={() => this.setState({ hasClicked: !this.state.hasClicked })}
+      >
         <ComponentHeader {...this.props} />
-        <label className={classNames} dangerouslySetInnerHTML={{ __html: myxss.process(this.props.data.content) }} />
+        <label
+          className={classNames}
+          dangerouslySetInnerHTML={{
+            __html: myxss.process(this.props.data.content),
+          }}
+        />
       </div>
     );
   }
 }
 
 class LineBreak extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      hasClicked: false,
+    };
+  }
   render() {
-    let baseClasses = 'SortableItem rfb-item';
-    if (this.props.data.pageBreakBefore) { baseClasses += ' alwaysbreak'; }
+    let baseClasses = "SortableItem rfb-item";
+    if (this.props.data.pageBreakBefore) {
+      baseClasses += " alwaysbreak";
+    }
 
+    if (this.state.hasClicked) {
+      baseClasses += " has-clicked";
+    }
     return (
-      <div className={baseClasses}>
+      <div
+        className={baseClasses}
+        onClick={() => this.setState({ hasClicked: !this.state.hasClicked })}
+      >
         <ComponentHeader {...this.props} />
         <hr />
       </div>
@@ -85,28 +171,39 @@ class LineBreak extends React.Component {
 class TextInput extends React.Component {
   constructor(props) {
     super(props);
+    this.state = {
+      hasClicked: false,
+    };
     this.inputField = React.createRef();
   }
 
   render() {
     const props = {};
-    props.type = 'text';
-    props.className = 'form-control';
+    props.type = "text";
+    props.className = "form-control";
     props.name = this.props.data.field_name;
     if (this.props.mutable) {
       props.defaultValue = this.props.defaultValue;
       props.ref = this.inputField;
     }
 
-    let baseClasses = 'SortableItem rfb-item';
-    if (this.props.data.pageBreakBefore) { baseClasses += ' alwaysbreak'; }
+    let baseClasses = "SortableItem rfb-item";
+    if (this.props.data.pageBreakBefore) {
+      baseClasses += " alwaysbreak";
+    }
+    if (this.state.hasClicked) {
+      baseClasses += " has-clicked";
+    }
 
     if (this.props.read_only) {
-      props.disabled = 'disabled';
+      props.disabled = "disabled";
     }
 
     return (
-      <div className={baseClasses}>
+      <div
+        className={baseClasses}
+        onClick={() => this.setState({ hasClicked: !this.state.hasClicked })}
+      >
         <ComponentHeader {...this.props} />
         <div className="form-group">
           <ComponentLabel {...this.props} />
@@ -121,12 +218,15 @@ class NumberInput extends React.Component {
   constructor(props) {
     super(props);
     this.inputField = React.createRef();
+    this.state = {
+      hasClicked: false,
+    };
   }
 
   render() {
     const props = {};
-    props.type = 'number';
-    props.className = 'form-control';
+    props.type = "number";
+    props.className = "form-control";
     props.name = this.props.data.field_name;
 
     if (this.props.mutable) {
@@ -135,14 +235,23 @@ class NumberInput extends React.Component {
     }
 
     if (this.props.read_only) {
-      props.disabled = 'disabled';
+      props.disabled = "disabled";
     }
 
-    let baseClasses = 'SortableItem rfb-item';
-    if (this.props.data.pageBreakBefore) { baseClasses += ' alwaysbreak'; }
+    let baseClasses = "SortableItem rfb-item";
+    if (this.props.data.pageBreakBefore) {
+      baseClasses += " alwaysbreak";
+    }
+
+    if (this.state.hasClicked) {
+      baseClasses += " has-clicked";
+    }
 
     return (
-      <div className={baseClasses}>
+      <div
+        className={baseClasses}
+        onClick={() => this.setState({ hasClicked: !this.state.hasClicked })}
+      >
         <ComponentHeader {...this.props} />
         <div className="form-group">
           <ComponentLabel {...this.props} />
@@ -157,15 +266,18 @@ class TextArea extends React.Component {
   constructor(props) {
     super(props);
     this.inputField = React.createRef();
+    this.state = {
+      hasClicked: false,
+    };
   }
 
   render() {
     const props = {};
-    props.className = 'form-control';
+    props.className = "form-control";
     props.name = this.props.data.field_name;
 
     if (this.props.read_only) {
-      props.disabled = 'disabled';
+      props.disabled = "disabled";
     }
 
     if (this.props.mutable) {
@@ -173,11 +285,19 @@ class TextArea extends React.Component {
       props.ref = this.inputField;
     }
 
-    let baseClasses = 'SortableItem rfb-item';
-    if (this.props.data.pageBreakBefore) { baseClasses += ' alwaysbreak'; }
+    let baseClasses = "SortableItem rfb-item";
+    if (this.props.data.pageBreakBefore) {
+      baseClasses += " alwaysbreak";
+    }
+    if (this.state.hasClicked) {
+      baseClasses += " has-clicked";
+    }
 
     return (
-      <div className={baseClasses}>
+      <div
+        className={baseClasses}
+        onClick={() => this.setState({ hasClicked: !this.state.hasClicked })}
+      >
         <ComponentHeader {...this.props} />
         <div className="form-group">
           <ComponentLabel {...this.props} />
@@ -188,16 +308,18 @@ class TextArea extends React.Component {
   }
 }
 
-
 class Dropdown extends React.Component {
   constructor(props) {
     super(props);
     this.inputField = React.createRef();
+    this.state = {
+      hasClicked: false,
+    };
   }
 
   render() {
     const props = {};
-    props.className = 'form-control';
+    props.className = "form-control";
     props.name = this.props.data.field_name;
 
     if (this.props.mutable) {
@@ -206,23 +328,37 @@ class Dropdown extends React.Component {
     }
 
     if (this.props.read_only) {
-      props.disabled = 'disabled';
+      props.disabled = "disabled";
     }
 
-    let baseClasses = 'SortableItem rfb-item';
-    if (this.props.data.pageBreakBefore) { baseClasses += ' alwaysbreak'; }
+    let baseClasses = "SortableItem rfb-item";
+    if (this.props.data.pageBreakBefore) {
+      baseClasses += " alwaysbreak";
+    }
 
+    if (this.state.hasClicked) {
+      baseClasses += " has-clicked";
+    }
     return (
-      <div className={baseClasses}>
+      <div
+        className={baseClasses}
+        onClick={() => this.setState({ hasClicked: !this.state.hasClicked })}
+      >
         <ComponentHeader {...this.props} />
         <div className="form-group">
           <ComponentLabel {...this.props} />
-          <select {...props}>
-            {this.props.data.options.map((option) => {
-              const this_key = `preview_${option.key}`;
-              return <option value={option.value} key={this_key}>{option.text}</option>;
-            })}
-          </select>
+          <div>
+            <select {...props}>
+              {this.props.data.options.map((option) => {
+                const this_key = `preview_${option.key}`;
+                return (
+                  <option value={option.value} key={this_key}>
+                    {option.text}
+                  </option>
+                );
+              })}
+            </select>
+          </div>
         </div>
       </div>
     );
@@ -234,6 +370,7 @@ class Signature extends React.Component {
     super(props);
     this.state = {
       defaultValue: props.defaultValue,
+      hasClicked: false,
     };
     this.inputField = React.createRef();
     this.canvas = React.createRef();
@@ -241,17 +378,17 @@ class Signature extends React.Component {
 
   clear = () => {
     if (this.state.defaultValue) {
-      this.setState({ defaultValue: '' });
+      this.setState({ defaultValue: "" });
     } else if (this.canvas.current) {
       this.canvas.current.clear();
     }
-  }
+  };
 
   render() {
     const { defaultValue } = this.state;
     let canClear = !!defaultValue;
     const props = {};
-    props.type = 'hidden';
+    props.type = "hidden";
     props.name = this.props.data.field_name;
 
     if (this.props.mutable) {
@@ -266,8 +403,14 @@ class Signature extends React.Component {
       canClear = !this.props.read_only;
     }
 
-    let baseClasses = 'SortableItem rfb-item';
-    if (this.props.data.pageBreakBefore) { baseClasses += ' alwaysbreak'; }
+    let baseClasses = "SortableItem rfb-item";
+    if (this.props.data.pageBreakBefore) {
+      baseClasses += " alwaysbreak";
+    }
+
+    if (this.state.hasClicked) {
+      baseClasses += " has-clicked";
+    }
 
     let sourceDataURL;
     if (defaultValue && defaultValue.length > 0) {
@@ -275,16 +418,25 @@ class Signature extends React.Component {
     }
 
     return (
-      <div className={baseClasses}>
+      <div
+        className={baseClasses}
+        onClick={() => this.setState({ hasClicked: !this.state.hasClicked })}
+      >
         <ComponentHeader {...this.props} />
         <div className="form-group">
           <ComponentLabel {...this.props} />
-          {this.props.read_only === true || !!sourceDataURL
-            ? (<img src={sourceDataURL} />)
-            : (<SignaturePad {...pad_props} />)
-          }
+          {this.props.read_only === true || !!sourceDataURL ? (
+            <img src={sourceDataURL} />
+          ) : (
+            <SignaturePad {...pad_props} />
+          )}
           {canClear && (
-            <i className="fas fa-times clear-signature" onClick={this.clear} title="Clear Signature"></i>)}
+            <i
+              className="fas fa-times clear-signature"
+              onClick={this.clear}
+              title="Clear Signature"
+            ></i>
+          )}
           <input {...props} />
         </div>
       </div>
@@ -297,16 +449,19 @@ class Tags extends React.Component {
     super(props);
     this.inputField = React.createRef();
     const { defaultValue, data } = props;
-    this.state = { value: this.getDefaultValue(defaultValue, data.options) };
+    this.state = {
+      value: this.getDefaultValue(defaultValue, data.options),
+      hasClicked: false,
+    };
   }
 
   getDefaultValue(defaultValue, options) {
     if (defaultValue) {
-      if (typeof defaultValue === 'string') {
-        const vals = defaultValue.split(',').map(x => x.trim());
-        return options.filter(x => vals.indexOf(x.value) > -1);
+      if (typeof defaultValue === "string") {
+        const vals = defaultValue.split(",").map((x) => x.trim());
+        return options.filter((x) => vals.indexOf(x.value) > -1);
       }
-      return options.filter(x => defaultValue.indexOf(x.value) > -1);
+      return options.filter((x) => defaultValue.indexOf(x.value) > -1);
     }
     return [];
   }
@@ -318,7 +473,7 @@ class Tags extends React.Component {
   };
 
   render() {
-    const options = this.props.data.options.map(option => {
+    const options = this.props.data.options.map((option) => {
       option.label = option.text;
       return option;
     });
@@ -328,18 +483,27 @@ class Tags extends React.Component {
     props.onChange = this.handleChange;
 
     props.options = options;
-    if (!this.props.mutable) { props.value = options[0].text; } // to show a sample of what tags looks like
+    if (!this.props.mutable) {
+      props.value = options[0].text;
+    } // to show a sample of what tags looks like
     if (this.props.mutable) {
       props.isDisabled = this.props.read_only;
       props.value = this.state.value;
       props.ref = this.inputField;
     }
 
-    let baseClasses = 'SortableItem rfb-item';
-    if (this.props.data.pageBreakBefore) { baseClasses += ' alwaysbreak'; }
-
+    let baseClasses = "SortableItem rfb-item";
+    if (this.props.data.pageBreakBefore) {
+      baseClasses += " alwaysbreak";
+    }
+    if (this.state.hasClicked) {
+      baseClasses += " has-clicked";
+    }
     return (
-      <div className={baseClasses}>
+      <div
+        className={baseClasses}
+        onClick={() => this.setState({ hasClicked: !this.state.hasClicked })}
+      >
         <ComponentHeader {...this.props} />
         <div className="form-group">
           <ComponentLabel {...this.props} />
@@ -354,45 +518,73 @@ class Checkboxes extends React.Component {
   constructor(props) {
     super(props);
     this.options = {};
+    this.state = {
+      hasClicked: false,
+    };
   }
 
   render() {
     const self = this;
-    let classNames = 'custom-control custom-checkbox';
-    if (this.props.data.inline) { classNames += ' option-inline'; }
+    let classNames = "custom-control custom-checkbox";
+    if (this.props.data.inline) {
+      classNames += " option-inline";
+    }
 
-    let baseClasses = 'SortableItem rfb-item';
-    if (this.props.data.pageBreakBefore) { baseClasses += ' alwaysbreak'; }
+    let baseClasses = "SortableItem rfb-item";
+    if (this.props.data.pageBreakBefore) {
+      baseClasses += " alwaysbreak";
+    }
+
+    if (this.state.hasClicked) {
+      baseClasses += " has-clicked";
+    }
 
     return (
-      <div className={baseClasses}>
+      <div
+        className={baseClasses}
+        onClick={() => this.setState({ hasClicked: !this.state.hasClicked })}
+      >
         <ComponentHeader {...this.props} />
         <div className="form-group">
           <ComponentLabel className="form-label" {...this.props} />
-          {this.props.data.options.map((option) => {
-            const this_key = `preview_${option.key}`;
-            const props = {};
-            props.name = `option_${option.key}`;
+          <div>
+            {this.props.data.options.map((option) => {
+              const this_key = `preview_${option.key}`;
+              const props = {};
+              props.name = `option_${option.key}`;
 
-            props.type = 'checkbox';
-            props.value = option.value;
-            if (self.props.mutable) {
-              props.defaultChecked = self.props.defaultValue !== undefined && self.props.defaultValue.indexOf(option.key) > -1;
-            }
-            if (this.props.read_only) {
-              props.disabled = 'disabled';
-            }
-            return (
-              <div className={classNames} key={this_key}>
-                <input id={"fid_" + this_key} className="custom-control-input" ref={c => {
-                  if (c && self.props.mutable) {
-                    self.options[`child_ref_${option.key}`] = c;
-                  }
-                }} {...props} />
-                <label className="custom-control-label" htmlFor={"fid_" + this_key}>{option.text}</label>
-              </div>
-            );
-          })}
+              props.type = "checkbox";
+              props.value = option.value;
+              if (self.props.mutable) {
+                props.defaultChecked =
+                  self.props.defaultValue !== undefined &&
+                  self.props.defaultValue.indexOf(option.key) > -1;
+              }
+              if (this.props.read_only) {
+                props.disabled = "disabled";
+              }
+              return (
+                <div className={classNames} key={this_key}>
+                  <input
+                    id={"fid_" + this_key}
+                    className="custom-control-input"
+                    ref={(c) => {
+                      if (c && self.props.mutable) {
+                        self.options[`child_ref_${option.key}`] = c;
+                      }
+                    }}
+                    {...props}
+                  />
+                  <label
+                    className="custom-control-label"
+                    htmlFor={"fid_" + this_key}
+                  >
+                    {option.text}
+                  </label>
+                </div>
+              );
+            })}
+          </div>
         </div>
       </div>
     );
@@ -403,47 +595,75 @@ class RadioButtons extends React.Component {
   constructor(props) {
     super(props);
     this.options = {};
+    this.state = {
+      hasClicked: false,
+    };
   }
 
   render() {
     const self = this;
-    let classNames = 'custom-control custom-radio';
-    if (this.props.data.inline) { classNames += ' option-inline'; }
+    let classNames = "custom-control custom-radio";
+    if (this.props.data.inline) {
+      classNames += " option-inline";
+    }
 
-    let baseClasses = 'SortableItem rfb-item';
-    if (this.props.data.pageBreakBefore) { baseClasses += ' alwaysbreak'; }
+    let baseClasses = "SortableItem rfb-item";
+    if (this.props.data.pageBreakBefore) {
+      baseClasses += " alwaysbreak";
+    }
+
+    if (this.state.hasClicked) {
+      baseClasses += " has-clicked";
+    }
 
     return (
-      <div className={baseClasses}>
+      <div
+        className={baseClasses}
+        onClick={() => this.setState({ hasClicked: !this.state.hasClicked })}
+      >
         <ComponentHeader {...this.props} />
         <div className="form-group">
           <ComponentLabel className="form-label" {...this.props} />
-          {this.props.data.options.map((option) => {
-            const this_key = `preview_${option.key}`;
-            const props = {};
-            props.name = self.props.data.field_name;
+          <div>
+            {this.props.data.options.map((option) => {
+              const this_key = `preview_${option.key}`;
+              const props = {};
+              props.name = self.props.data.field_name;
 
-            props.type = 'radio';
-            props.value = option.value;
-            if (self.props.mutable) {
-              props.defaultChecked = (self.props.defaultValue !== undefined &&
-                (self.props.defaultValue.indexOf(option.key) > -1 || self.props.defaultValue.indexOf(option.value) > -1));
-            }
-            if (this.props.read_only) {
-              props.disabled = 'disabled';
-            }
+              props.type = "radio";
+              props.value = option.value;
+              if (self.props.mutable) {
+                props.defaultChecked =
+                  self.props.defaultValue !== undefined &&
+                  (self.props.defaultValue.indexOf(option.key) > -1 ||
+                    self.props.defaultValue.indexOf(option.value) > -1);
+              }
+              if (this.props.read_only) {
+                props.disabled = "disabled";
+              }
 
-            return (
-              <div className={classNames} key={this_key}>
-                <input id={"fid_" + this_key} className="custom-control-input" ref={c => {
-                  if (c && self.props.mutable) {
-                    self.options[`child_ref_${option.key}`] = c;
-                  }
-                }} {...props} />
-                <label className="custom-control-label" htmlFor={"fid_" + this_key}>{option.text}</label>
-              </div>
-            );
-          })}
+              return (
+                <div className={classNames} key={this_key}>
+                  <input
+                    id={"fid_" + this_key}
+                    className="custom-control-input"
+                    ref={(c) => {
+                      if (c && self.props.mutable) {
+                        self.options[`child_ref_${option.key}`] = c;
+                      }
+                    }}
+                    {...props}
+                  />
+                  <label
+                    className="custom-control-label"
+                    htmlFor={"fid_" + this_key}
+                  >
+                    {option.text}
+                  </label>
+                </div>
+              );
+            })}
+          </div>
         </div>
       </div>
     );
@@ -451,21 +671,39 @@ class RadioButtons extends React.Component {
 }
 
 class Image extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      hasClicked: false,
+    };
+  }
   render() {
-    const style = (this.props.data.center) ? { textAlign: 'center' } : null;
+    const style = this.props.data.center ? { textAlign: "center" } : null;
 
-    let baseClasses = 'SortableItem rfb-item';
-    if (this.props.data.pageBreakBefore) { baseClasses += ' alwaysbreak'; }
+    let baseClasses = "SortableItem rfb-item";
+    if (this.props.data.pageBreakBefore) {
+      baseClasses += " alwaysbreak";
+    }
+
+    if (this.state.hasClicked) {
+      baseClasses += " has-clicked";
+    }
 
     return (
-      <div className={baseClasses} style={style}>
+      <div
+        className={baseClasses}
+        onClick={() => this.setState({ hasClicked: !this.state.hasClicked })}
+        style={style}
+      >
         <ComponentHeader {...this.props} />
-        { this.props.data.src &&
-          <img src={this.props.data.src} width={this.props.data.width} height={this.props.data.height} />
-        }
-        { !this.props.data.src &&
-          <div className="no-image">No Image</div>
-        }
+        {this.props.data.src && (
+          <img
+            src={this.props.data.src}
+            width={this.props.data.width}
+            height={this.props.data.height}
+          />
+        )}
+        {!this.props.data.src && <div className="no-image">No Image</div>}
       </div>
     );
   }
@@ -475,6 +713,9 @@ class Rating extends React.Component {
   constructor(props) {
     super(props);
     this.inputField = React.createRef();
+    this.state = {
+      hasClicked: false,
+    };
   }
 
   render() {
@@ -483,17 +724,29 @@ class Rating extends React.Component {
     props.ratingAmount = 5;
 
     if (this.props.mutable) {
-      props.rating = (this.props.defaultValue !== undefined) ? parseFloat(this.props.defaultValue, 10) : 0;
+      props.rating =
+        this.props.defaultValue !== undefined
+          ? parseFloat(this.props.defaultValue, 10)
+          : 0;
       props.editing = true;
       props.disabled = this.props.read_only;
       props.ref = this.inputField;
     }
 
-    let baseClasses = 'SortableItem rfb-item';
-    if (this.props.data.pageBreakBefore) { baseClasses += ' alwaysbreak'; }
+    let baseClasses = "SortableItem rfb-item";
+    if (this.props.data.pageBreakBefore) {
+      baseClasses += " alwaysbreak";
+    }
+
+    if (this.state.hasClicked) {
+      baseClasses += " has-clicked";
+    }
 
     return (
-      <div className={baseClasses}>
+      <div
+        className={baseClasses}
+        onClick={() => this.setState({ hasClicked: !this.state.hasClicked })}
+      >
         <ComponentHeader {...this.props} />
         <div className="form-group">
           <ComponentLabel {...this.props} />
@@ -505,15 +758,32 @@ class Rating extends React.Component {
 }
 
 class HyperLink extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      hasClicked: false,
+    };
+  }
   render() {
-    let baseClasses = 'SortableItem rfb-item';
-    if (this.props.data.pageBreakBefore) { baseClasses += ' alwaysbreak'; }
+    let baseClasses = "SortableItem rfb-item";
+    if (this.props.data.pageBreakBefore) {
+      baseClasses += " alwaysbreak";
+    }
+
+    if (this.state.hasClicked) {
+      baseClasses += " has-clicked";
+    }
 
     return (
-      <div className={baseClasses}>
+      <div
+        className={baseClasses}
+        onClick={() => this.setState({ hasClicked: !this.state.hasClicked })}
+      >
         <ComponentHeader {...this.props} />
         <div className="form-group">
-          <a target="_blank" href={this.props.data.href}>{this.props.data.content}</a>
+          <a target="_blank" href={this.props.data.href}>
+            {this.props.data.content}
+          </a>
         </div>
       </div>
     );
@@ -521,15 +791,34 @@ class HyperLink extends React.Component {
 }
 
 class Download extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      hasClicked: false,
+    };
+  }
   render() {
-    let baseClasses = 'SortableItem rfb-item';
-    if (this.props.data.pageBreakBefore) { baseClasses += ' alwaysbreak'; }
+    let baseClasses = "SortableItem rfb-item";
+    if (this.props.data.pageBreakBefore) {
+      baseClasses += " alwaysbreak";
+    }
+
+    if (this.state.hasClicked) {
+      baseClasses += " has-clicked";
+    }
 
     return (
-      <div className={baseClasses}>
+      <div
+        className={baseClasses}
+        onClick={() => this.setState({ hasClicked: !this.state.hasClicked })}
+      >
         <ComponentHeader {...this.props} />
         <div className="form-group">
-          <a href={`${this.props.download_path}?id=${this.props.data.file_path}`}>{this.props.data.content}</a>
+          <a
+            href={`${this.props.download_path}?id=${this.props.data.file_path}`}
+          >
+            {this.props.data.content}
+          </a>
         </div>
       </div>
     );
@@ -539,14 +828,14 @@ class Download extends React.Component {
 class Camera extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { img: null };
+    this.state = { img: null, hasClicked: false };
   }
 
   displayImage = (e) => {
     const self = this;
     const target = e.target;
-    let file; let
-      reader;
+    let file;
+    let reader;
 
     if (target.files && target.files.length) {
       file = target.files[0];
@@ -565,50 +854,85 @@ class Camera extends React.Component {
   clearImage = () => {
     this.setState({
       img: null,
+      hasClicked: false,
     });
   };
 
   render() {
-    let baseClasses = 'SortableItem rfb-item';
+    let baseClasses = "SortableItem rfb-item";
     const name = this.props.data.field_name;
-    const fileInputStyle = this.state.img ? { display: 'none' } : null;
-    if (this.props.data.pageBreakBefore) { baseClasses += ' alwaysbreak'; }
+    const fileInputStyle = this.state.img ? { display: "none" } : null;
+    if (this.props.data.pageBreakBefore) {
+      baseClasses += " alwaysbreak";
+    }
+
+    if (this.state.hasClicked) {
+      baseClasses += " has-clicked";
+    }
     let sourceDataURL;
-    if (this.props.read_only === true && this.props.defaultValue && this.props.defaultValue.length > 0) {
+    if (
+      this.props.read_only === true &&
+      this.props.defaultValue &&
+      this.props.defaultValue.length > 0
+    ) {
       if (this.props.defaultValue.indexOf(name > -1)) {
         sourceDataURL = this.props.defaultValue;
       } else {
         sourceDataURL = `data:image/png;base64,${this.props.defaultValue}`;
       }
     }
-    console.log('sourceDataURL', sourceDataURL);
+    console.log("sourceDataURL", sourceDataURL);
     return (
-      <div className={baseClasses}>
+      <div
+        className={baseClasses}
+        onClick={() => this.setState({ hasClicked: !this.state.hasClicked })}
+      >
         <ComponentHeader {...this.props} />
         <div className="form-group">
           <ComponentLabel {...this.props} />
-          {this.props.read_only === true && this.props.defaultValue && this.props.defaultValue.length > 0
-            ? (<div><img src={sourceDataURL} /></div>)
-            : (<div className="image-upload-container">
-
+          {this.props.read_only === true &&
+          this.props.defaultValue &&
+          this.props.defaultValue.length > 0 ? (
+            <div>
+              <img src={sourceDataURL} />
+            </div>
+          ) : (
+            <div className="image-upload-container">
               <div style={fileInputStyle}>
-                <input name={name} type="file" accept="image/*" capture="camera" className="image-upload" onChange={this.displayImage} />
+                <input
+                  name={name}
+                  type="file"
+                  accept="image/*"
+                  capture="camera"
+                  className="image-upload"
+                  onChange={this.displayImage}
+                />
                 <div className="image-upload-control">
-                  <div className="btn btn-default"><i className="fas fa-camera"></i> Upload Photo</div>
+                  <div className="btn btn-default">
+                    <i className="fas fa-camera"></i> Upload Photo
+                  </div>
                   <p>Select an image from your computer or device.</p>
                 </div>
               </div>
 
-              { this.state.img &&
+              {this.state.img && (
                 <div>
-                  <img src={this.state.img} height="100" className="image-upload-preview" /><br />
-                  <div className="btn btn-image-clear" onClick={this.clearImage}>
+                  <img
+                    src={this.state.img}
+                    height="100"
+                    className="image-upload-preview"
+                  />
+                  <br />
+                  <div
+                    className="btn btn-image-clear"
+                    onClick={this.clearImage}
+                  >
                     <i className="fas fa-times"></i> Clear Photo
+                  </div>
                 </div>
-                </div>
-              }
-            </div>)
-          }
+              )}
+            </div>
+          )}
         </div>
       </div>
     );
@@ -620,7 +944,11 @@ class Range extends React.Component {
     super(props);
     this.inputField = React.createRef();
     this.state = {
-      value: props.defaultValue !== undefined ? parseInt(props.defaultValue, 10) : parseInt(props.data.default_value, 10),
+      value:
+        props.defaultValue !== undefined
+          ? parseInt(props.defaultValue, 10)
+          : parseInt(props.data.default_value, 10),
+      hasClicked: false,
     };
   }
 
@@ -628,14 +956,15 @@ class Range extends React.Component {
     const { target } = e;
     this.setState({
       value: target.value,
+      hasClicked: false,
     });
-  }
+  };
 
   render() {
     const props = {};
     const name = this.props.data.field_name;
 
-    props.type = 'range';
+    props.type = "range";
     props.list = `tickmarks_${name}`;
     props.min = this.props.data.min_value;
     props.max = this.props.data.max_value;
@@ -649,29 +978,48 @@ class Range extends React.Component {
     }
 
     const datalist = [];
-    for (let i = parseInt(props.min_value, 10); i <= parseInt(props.max_value, 10); i += parseInt(props.step, 10)) {
+    for (
+      let i = parseInt(props.min_value, 10);
+      i <= parseInt(props.max_value, 10);
+      i += parseInt(props.step, 10)
+    ) {
       datalist.push(i);
     }
 
     const oneBig = 100 / (datalist.length - 1);
 
-    const _datalist = datalist.map((d, idx) => <option key={`${props.list}_${idx}`}>{d}</option>);
+    const _datalist = datalist.map((d, idx) => (
+      <option key={`${props.list}_${idx}`}>{d}</option>
+    ));
 
     const visible_marks = datalist.map((d, idx) => {
       const option_props = {};
       let w = oneBig;
-      if (idx === 0 || idx === datalist.length - 1) { w = oneBig / 2; }
+      if (idx === 0 || idx === datalist.length - 1) {
+        w = oneBig / 2;
+      }
       option_props.key = `${props.list}_label_${idx}`;
       option_props.style = { width: `${w}%` };
-      if (idx === datalist.length - 1) { option_props.style = { width: `${w}%`, textAlign: 'right' }; }
+      if (idx === datalist.length - 1) {
+        option_props.style = { width: `${w}%`, textAlign: "right" };
+      }
       return <label {...option_props}>{d}</label>;
     });
 
-    let baseClasses = 'SortableItem rfb-item';
-    if (this.props.data.pageBreakBefore) { baseClasses += ' alwaysbreak'; }
+    let baseClasses = "SortableItem rfb-item";
+    if (this.props.data.pageBreakBefore) {
+      baseClasses += " alwaysbreak";
+    }
+
+    if (this.state.hasClicked) {
+      baseClasses += " has-clicked";
+    }
 
     return (
-      <div className={baseClasses}>
+      <div
+        className={baseClasses}
+        onClick={() => this.setState({ hasClicked: !this.state.hasClicked })}
+      >
         <ComponentHeader {...this.props} />
         <div className="form-group">
           <ComponentLabel {...this.props} />
@@ -682,13 +1030,9 @@ class Range extends React.Component {
             </div>
             <ReactBootstrapSlider {...props} />
           </div>
-          <div className="visible_marks">
-            {visible_marks}
-          </div>
+          <div className="visible_marks">{visible_marks}</div>
           <input name={name} value={this.state.value} type="hidden" />
-          <datalist id={props.list}>
-            {_datalist}
-          </datalist>
+          <datalist id={props.list}>{_datalist}</datalist>
         </div>
       </div>
     );
