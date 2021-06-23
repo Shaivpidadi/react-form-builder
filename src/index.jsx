@@ -1,15 +1,15 @@
 /**
-  * <ReactFormBuilder />
-*/
+ * <ReactFormBuilder />
+ */
 
-import React from 'react';
-import { DndProvider } from 'react-dnd';
-import { HTML5Backend } from 'react-dnd-html5-backend';
-import Preview from './preview';
-import Toolbar from './toolbar';
-import ReactFormGenerator from './form';
-import store from './stores/store';
-import Registry from './stores/registry';
+import React from "react";
+import { DndProvider } from "react-dnd";
+import { HTML5Backend } from "react-dnd-html5-backend";
+import Preview from "./preview";
+import Toolbar from "./toolbar";
+import ReactFormGenerator from "./form";
+import store from "./stores/store";
+import Registry from "./stores/registry";
 
 class ReactFormBuilder extends React.Component {
   constructor(props) {
@@ -23,6 +23,7 @@ class ReactFormBuilder extends React.Component {
   }
 
   editModeOn(data, e) {
+    console.log({ data });
     e.preventDefault();
     e.stopPropagation();
     if (this.state.editMode) {
@@ -45,11 +46,13 @@ class ReactFormBuilder extends React.Component {
     const toolbarProps = {
       showDescription: this.props.show_description,
     };
-    if (this.props.toolbarItems) { toolbarProps.items = this.props.toolbarItems; }
+    if (this.props.toolbarItems) {
+      toolbarProps.items = this.props.toolbarItems;
+    }
     return (
       <DndProvider backend={HTML5Backend}>
-       <div>
-         {/* <div>
+        <div>
+          {/* <div>
            <p>
              It is easy to implement a sortable interface with React DnD. Just make
              the same component both a drag source and a drop target, and reorder
@@ -59,7 +62,8 @@ class ReactFormBuilder extends React.Component {
          </div> */}
           <div className="react-form-builder clearfix">
             <div>
-              <Preview files={this.props.files}
+              <Preview
+                files={this.props.files}
                 manualEditModeOff={this.manualEditModeOff.bind(this)}
                 showCorrectColumn={this.props.showCorrectColumn}
                 parent={this}
@@ -72,8 +76,12 @@ class ReactFormBuilder extends React.Component {
                 editMode={this.state.editMode}
                 variables={this.props.variables}
                 registry={Registry}
-                editElement={this.state.editElement} />
-              <Toolbar {...toolbarProps} customItems={this.props.customToolbarItems} />
+                editElement={this.state.editElement}
+              />
+              <Toolbar
+                {...toolbarProps}
+                customItems={this.props.customToolbarItems}
+              />
             </div>
           </div>
         </div>
@@ -91,5 +99,8 @@ FormBuilders.Registry = Registry;
 export default FormBuilders;
 
 export {
- ReactFormBuilder, ReactFormGenerator, store as ElementStore, Registry,
+  ReactFormBuilder,
+  ReactFormGenerator,
+  store as ElementStore,
+  Registry,
 };
