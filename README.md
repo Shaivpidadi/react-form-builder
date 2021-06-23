@@ -1,5 +1,7 @@
 [![npm version](https://badge.fury.io/js/react-form-builder2.svg)](//npmjs.com/package/react-form-builder2)
 [![downloads](https://img.shields.io/npm/dm/react-form-builder2.svg)](https://img.shields.io/npm/dm/react-form-builder2.svg)
+
+Fork of [Form-Builder By Kiho](https://github.com/kiho/react-form-builder#readme)
 # React Form Builder 2
 A complete react form builder that interfaces with a json endpoint to load and save generated forms.
 - Upgraded to React 16.8.6
