@@ -1,6 +1,6 @@
 {
   "name": "react-form-builder-validation",
-  "version": "0.8.9",
+  "version": "0.8.10",
   "description": "A complete form builder for react.",
   "main": "lib/index.js",
   "license": "MIT",
