@@ -2,7 +2,6 @@ import React from "react";
 import HeaderBar from "./header-bar";
 
 const ComponentHeader = (props) => {
-  console.log({ props });
   if (props.mutable) {
     return null;
   }

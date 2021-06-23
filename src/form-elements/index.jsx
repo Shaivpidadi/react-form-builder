@@ -44,7 +44,7 @@ class Header extends React.Component {
         className={baseClasses}
         onClick={() => this.setState({ hasClicked: !this.state.hasClicked })}
       >
-        <ComponentHeader {...this.props} />
+        <ComponentHeader {...this.props} hasClicked={this.state.hasClicked}/>
         <h3
           className={classNames}
           dangerouslySetInnerHTML={{
@@ -86,7 +86,7 @@ class Paragraph extends React.Component {
         className={baseClasses}
         onClick={() => this.setState({ hasClicked: !this.state.hasClicked })}
       >
-        <ComponentHeader {...this.props} />
+        <ComponentHeader {...this.props} hasClicked={this.state.hasClicked} />
         <p
           className={classNames}
           dangerouslySetInnerHTML={{
@@ -128,7 +128,7 @@ class Label extends React.Component {
         className={baseClasses}
         onClick={() => this.setState({ hasClicked: !this.state.hasClicked })}
       >
-        <ComponentHeader {...this.props} />
+        <ComponentHeader {...this.props} hasClicked={this.state.hasClicked} />
         <label
           className={classNames}
           dangerouslySetInnerHTML={{
@@ -161,7 +161,7 @@ class LineBreak extends React.Component {
         className={baseClasses}
         onClick={() => this.setState({ hasClicked: !this.state.hasClicked })}
       >
-        <ComponentHeader {...this.props} />
+        <ComponentHeader {...this.props} hasClicked={this.state.hasClicked} />
         <hr />
       </div>
     );
@@ -204,7 +204,7 @@ class TextInput extends React.Component {
         className={baseClasses}
         onClick={() => this.setState({ hasClicked: !this.state.hasClicked })}
       >
-        <ComponentHeader {...this.props} />
+        <ComponentHeader {...this.props} hasClicked={this.state.hasClicked} />
         <div className="form-group">
           <ComponentLabel {...this.props} />
           <input {...props} />
@@ -252,7 +252,7 @@ class NumberInput extends React.Component {
         className={baseClasses}
         onClick={() => this.setState({ hasClicked: !this.state.hasClicked })}
       >
-        <ComponentHeader {...this.props} />
+        <ComponentHeader {...this.props} hasClicked={this.state.hasClicked} />
         <div className="form-group">
           <ComponentLabel {...this.props} />
           <input {...props} />
@@ -298,7 +298,7 @@ class TextArea extends React.Component {
         className={baseClasses}
         onClick={() => this.setState({ hasClicked: !this.state.hasClicked })}
       >
-        <ComponentHeader {...this.props} />
+        <ComponentHeader {...this.props} hasClicked={this.state.hasClicked} />
         <div className="form-group">
           <ComponentLabel {...this.props} />
           <textarea {...props} />
@@ -344,7 +344,7 @@ class Dropdown extends React.Component {
         className={baseClasses}
         onClick={() => this.setState({ hasClicked: !this.state.hasClicked })}
       >
-        <ComponentHeader {...this.props} />
+        <ComponentHeader {...this.props} hasClicked={this.state.hasClicked} />
         <div className="form-group">
           <ComponentLabel {...this.props} />
           <div>
@@ -422,7 +422,7 @@ class Signature extends React.Component {
         className={baseClasses}
         onClick={() => this.setState({ hasClicked: !this.state.hasClicked })}
       >
-        <ComponentHeader {...this.props} />
+        <ComponentHeader {...this.props} hasClicked={this.state.hasClicked} />
         <div className="form-group">
           <ComponentLabel {...this.props} />
           {this.props.read_only === true || !!sourceDataURL ? (
@@ -504,7 +504,7 @@ class Tags extends React.Component {
         className={baseClasses}
         onClick={() => this.setState({ hasClicked: !this.state.hasClicked })}
       >
-        <ComponentHeader {...this.props} />
+        <ComponentHeader {...this.props} hasClicked={this.state.hasClicked} />
         <div className="form-group">
           <ComponentLabel {...this.props} />
           <Select {...props} />
@@ -544,7 +544,7 @@ class Checkboxes extends React.Component {
         className={baseClasses}
         onClick={() => this.setState({ hasClicked: !this.state.hasClicked })}
       >
-        <ComponentHeader {...this.props} />
+        <ComponentHeader {...this.props} hasClicked={this.state.hasClicked} />
         <div className="form-group">
           <ComponentLabel className="form-label" {...this.props} />
           <div>
@@ -621,7 +621,7 @@ class RadioButtons extends React.Component {
         className={baseClasses}
         onClick={() => this.setState({ hasClicked: !this.state.hasClicked })}
       >
-        <ComponentHeader {...this.props} />
+        <ComponentHeader {...this.props} hasClicked={this.state.hasClicked} />
         <div className="form-group">
           <ComponentLabel className="form-label" {...this.props} />
           <div>
@@ -695,7 +695,7 @@ class Image extends React.Component {
         onClick={() => this.setState({ hasClicked: !this.state.hasClicked })}
         style={style}
       >
-        <ComponentHeader {...this.props} />
+        <ComponentHeader {...this.props} hasClicked={this.state.hasClicked} />
         {this.props.data.src && (
           <img
             src={this.props.data.src}
@@ -747,7 +747,7 @@ class Rating extends React.Component {
         className={baseClasses}
         onClick={() => this.setState({ hasClicked: !this.state.hasClicked })}
       >
-        <ComponentHeader {...this.props} />
+        <ComponentHeader {...this.props} hasClicked={this.state.hasClicked} />
         <div className="form-group">
           <ComponentLabel {...this.props} />
           <StarRating {...props} />
@@ -779,7 +779,7 @@ class HyperLink extends React.Component {
         className={baseClasses}
         onClick={() => this.setState({ hasClicked: !this.state.hasClicked })}
       >
-        <ComponentHeader {...this.props} />
+        <ComponentHeader {...this.props} hasClicked={this.state.hasClicked} />
         <div className="form-group">
           <a target="_blank" href={this.props.data.href}>
             {this.props.data.content}
@@ -812,7 +812,7 @@ class Download extends React.Component {
         className={baseClasses}
         onClick={() => this.setState({ hasClicked: !this.state.hasClicked })}
       >
-        <ComponentHeader {...this.props} />
+        <ComponentHeader {...this.props} hasClicked={this.state.hasClicked} />
         <div className="form-group">
           <a
             href={`${this.props.download_path}?id=${this.props.data.file_path}`}
@@ -887,7 +887,7 @@ class Camera extends React.Component {
         className={baseClasses}
         onClick={() => this.setState({ hasClicked: !this.state.hasClicked })}
       >
-        <ComponentHeader {...this.props} />
+        <ComponentHeader {...this.props} hasClicked={this.state.hasClicked} />
         <div className="form-group">
           <ComponentLabel {...this.props} />
           {this.props.read_only === true &&
@@ -1020,7 +1020,7 @@ class Range extends React.Component {
         className={baseClasses}
         onClick={() => this.setState({ hasClicked: !this.state.hasClicked })}
       >
-        <ComponentHeader {...this.props} />
+        <ComponentHeader {...this.props} hasClicked={this.state.hasClicked} />
         <div className="form-group">
           <ComponentLabel {...this.props} />
           <div className="range">

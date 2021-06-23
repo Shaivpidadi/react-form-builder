@@ -7,15 +7,12 @@ import Grip from "../multi-column/grip";
 
 export default class HeaderBar extends React.Component {
   render() {
-    console.log(this.props.hasClicked);
     return (
       <div
-        className={`toolbar-header${
-          this.props.hasClicked ? "has-clicked" : ""
-        }`}
+        className={"toolbar-header"}
       >
         <span className="badge badge-secondary">{this.props.data.text}</span>
-        <div className="toolbar-header-buttons">
+        {this.props.hasClicked && <div className="toolbar-header-buttons">
           {this.props.data.element !== "LineBreak" && (
             <div
               className="btn is-isolated"
@@ -33,7 +30,7 @@ export default class HeaderBar extends React.Component {
           >
             <i className="is-isolated fas fa-trash"></i>
           </div>
-        </div>
+        </div>}
       </div>
     );
   }
