@@ -518,12 +518,17 @@ export default class ReactForm extends React.Component {
                 />
               )}
               {!this.props.hide_actions && this.props.back_action && (
-                <a
-                  href={this.props.back_action}
-                  className="btn btn-default btn-cancel btn-big"
-                >
-                  {backName}
-                </a>
+                <input
+                  type="button"
+                  className="btn btn-big"
+                  value={backName}
+                />
+                // <a
+                //   href={this.props.back_action}
+                //   className="btn btn-default btn-cancel btn-big"
+                // >
+                //   {backName}
+                // </a>
               )}
             </div>
           </form>
