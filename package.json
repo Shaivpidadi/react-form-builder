@@ -1,5 +1,5 @@
 {
-  "name": "react-form-builder-validation",
+  "name": "react-form-builder-validation-updated",
   "version": "0.8.10",
   "description": "A complete form builder for react.",
   "main": "lib/index.js",
@@ -21,7 +21,7 @@
     "drag",
     "drop"
   ],
-  "author": "Kiho Chang",
+  "author": "Chaincode",
   "dependencies": {
     "beedle": "^0.8.1",
     "classnames": "^2.2.6",

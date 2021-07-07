@@ -281,14 +281,14 @@ export default class ReactForm extends React.Component {
 
         // Check Min
         if (!!item.inputMin) {
-          if (Number($item.value) < Number(item.inputMin)) {
+          if (Number($item.value).toString().length < Number(item.inputMin)) {
             errors.push(`${item.label} must be greater than ${item.inputMin}`);
           }
         }
 
         // Check Max
         if (!!item.inputMax) {
-          if (Number($item.value) > Number(item.inputMax)) {
+          if (Number($item.value).toString().length > Number(item.inputMax)) {
             errors.push(`${item.label} must be less than ${item.inputMax}`);
           }
         }
